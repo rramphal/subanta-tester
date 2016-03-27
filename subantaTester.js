@@ -17,7 +17,7 @@ ready(main);
 /* ========================================================== */
 
 function main () {
-    var number = {
+    var NUMBER = {
         1 : {
             sanskrit : 'ekavachanam',
             itrans   : 'ekavachanam',
@@ -35,7 +35,7 @@ function main () {
         }
     };
 
-    var vibhakti = {
+    var VIBHAKTI = {
         1 : {
             sanskrit : 'prathamā',
             itrans   : 'prathamA',
@@ -87,7 +87,7 @@ function main () {
         }
     };
 
-    var sup = [
+    var SUP = [
         {
             sanskrit : 'sU',
             itrans   : 'su',
@@ -192,7 +192,7 @@ function main () {
         },
     ];
 
-    var length = sup.length;
+    var length = SUP.length;
 
     var button = document.getElementById('submit');
     var output = document.getElementById('output');
@@ -204,7 +204,7 @@ function main () {
     function randomize () {
         var index = getRandomIndex(length);
 
-        output.innerHTML = sup[index].sanskrit;
+        output.innerHTML = SUP[index].sanskrit;
     }
 
     button.addEventListener('click', randomize, false);
