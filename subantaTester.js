@@ -189,7 +189,7 @@ function main () {
             itrans   : 'sup',
             number   : 3,
             case     : [7]
-        },
+        }
     ];
 
     var length = SUP.length;
