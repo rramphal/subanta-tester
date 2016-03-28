@@ -17,7 +17,7 @@ ready(main);
 /* ========================================================== */
 
 function main () {
-    var NUMBER = {
+    const NUMBER = {
         1 : {
             sanskrit : 'ekavachanam',
             itrans   : 'ekavachanam',
@@ -35,7 +35,7 @@ function main () {
         }
     };
 
-    var VIBHAKTI = {
+    const CASE = {
         1 : {
             sanskrit : 'prathamā',
             itrans   : 'prathamA',
@@ -87,7 +87,7 @@ function main () {
         }
     };
 
-    var SUP = [
+    const SUP_MAPPING = [
         {
             sanskrit : 'sU',
             itrans   : 'su',
@@ -192,20 +192,23 @@ function main () {
         }
     ];
 
-    var length = SUP.length;
+    const LENGTH = SUP_MAPPING.length;
 
     var test   = document.getElementById('test');
     var answer = document.getElementById('answer');
     var output = document.getElementById('output');
+
+    var currentTest = '';
 
     function getRandomIndex (length) {
         return Math.floor(Math.random() * length);
     }
 
     function generateTest () {
-        var index = getRandomIndex(length);
+        var index       = getRandomIndex(LENGTH);
+        var currentTest = SUP_MAPPING[index].sanskrit;
 
-        output.innerHTML = SUP[index].sanskrit;
+        output.innerHTML = currentTest;
 
         answer.disabled = false;
     }
