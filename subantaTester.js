@@ -240,7 +240,7 @@
                          forms,
                          '\n\nFALLING BACK TO SUP'
             );
-            return _getSup();
+            return _splitForms(_getSup());
         } else {
             return splitForms;
         }
