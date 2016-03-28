@@ -8,7 +8,7 @@
     }
 })(function () {
     /* ==================== CONSTANTS ==================== */
-    const NUMBER = {
+    var NUMBER = {
         1 : {
             sanskrit : 'ekavachanam',
             itrans   : 'ekavachanam',
@@ -26,7 +26,7 @@
         }
     };
 
-    const CASE = {
+    var CASE = {
         1 : {
             sanskrit : 'prathamā',
             itrans   : 'prathamA',
@@ -78,7 +78,7 @@
         }
     };
 
-    const SUP_MAPPING = [
+    var SUP_MAPPING = [
         {
             sanskrit : 'sU',
             itrans   : 'su',
@@ -183,11 +183,11 @@
         }
     ];
 
-    const FORMS = {
-        sup : SUP_MAPPING.map(sup => sup.sanskrit)
+    var FORMS = {
+        sup : SUP_MAPPING.map(function (sup) { return sup.sanskrit; })
     };
 
-    const OPTIONS = {
+    var OPTIONS = {
         case_s   : 'Sanskrit: Case',
         number_s : 'Sanskrit: Number',
         case_e   : 'English: Case',
@@ -195,7 +195,7 @@
         case_m   : 'English: Meaning'
     };
 
-    const LENGTH = SUP_MAPPING.length;
+    var LENGTH = SUP_MAPPING.length;
 
     /* ==================== GLOBALS ==================== */
 
@@ -216,7 +216,7 @@
     /* ==================== TEST LOGIC ==================== */
 
     function _generateTest () {
-        var currentForm  = formsList.options[formsList.selectedIndex].value;
+        var currentForm = formsList.options[formsList.selectedIndex].value;
 
         currentIndex = _getRandomIndex(LENGTH);
 
@@ -240,7 +240,9 @@
     }
 
     function _getCases (variant) {
-        return SUP_MAPPING[currentIndex].case.map(caseNumber => CASE[caseNumber][variant]).join(', ');
+        return SUP_MAPPING[currentIndex].case.map(function (caseNumber) {
+            return CASE[caseNumber][variant];
+        }).join(', ');
     }
 
     function _generateAnswer () {
@@ -266,17 +268,22 @@
     function _populateForms () {
         var forms = Object.keys(FORMS);
 
-        forms.forEach( form => formsList.add(new Option(form, form)));
+        forms.forEach(function (form) { formsList.add(new Option(form, form)); });
     }
 
     function _populateOptions () {
         var options = Object.keys(OPTIONS);
 
-        options.forEach( optionName => {
-            let listItem = document.createElement('li');
-            let label    = document.createElement('label');
-            let checkbox = document.createElement('input');
-            let text     = document.createTextNode(OPTIONS[optionName]);
+        var listItem;
+        var label;
+        var checkbox;
+        var text;
+
+        options.forEach( function (optionName) {
+            listItem = document.createElement('li');
+            label    = document.createElement('label');
+            checkbox = document.createElement('input');
+            text     = document.createTextNode(OPTIONS[optionName]);
 
             checkbox.type = 'checkbox';
             checkbox.name = optionName;
