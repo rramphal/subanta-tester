@@ -10,7 +10,9 @@ html {
             user-select: none;
 }
 
-#buttons {
+#title,
+#buttons,
+#table {
     text-align: center;
 }
 
@@ -45,10 +47,6 @@ html {
 
 .number {
     color: blue;
-}
-
-#table {
-    text-align: center;
 }
 
 .alt {
