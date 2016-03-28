@@ -194,6 +194,10 @@ function main () {
 
     var length = SUP.length;
 
+    var test   = document.getElementById('test');
+    var answer = document.getElementById('answer');
+    var output = document.getElementById('output');
+
     function getRandomIndex (length) {
         return Math.floor(Math.random() * length);
     }
@@ -202,17 +206,15 @@ function main () {
         var index = getRandomIndex(length);
 
         output.innerHTML = SUP[index].sanskrit;
+
+        answer.disabled = false;
     }
 
     function showAnswer () {
-        var answer = 'testAnswer';
+        output.innerHTML = 'testAnswer';
 
-        output.innerHTML = answer;
+        answer.disabled = true;
     }
-
-    var test   = document.getElementById('test');
-    var answer = document.getElementById('answer');
-    var output = document.getElementById('output');
 
     test.addEventListener('click', generateTest, false);
     answer.addEventListener('click', showAnswer, false);
