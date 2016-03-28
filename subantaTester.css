@@ -2,6 +2,14 @@ html {
     font-family: 'GentiumAlt', 'Sanskrit 2003';
 }
 
+.unselectable {
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+         -o-user-select: none;
+            user-select: none;
+}
+
 #output {
     margin-top: 10px;
     border: 2px dashed darkgrey;
