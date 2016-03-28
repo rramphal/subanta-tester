@@ -268,7 +268,9 @@
     function _populateForms () {
         var forms = Object.keys(FORMS);
 
-        forms.forEach(function (form) { formsList.add(new Option(form, form)); });
+        forms.forEach(function (form) {
+            formsList.add(new Option(form, form));
+        });
     }
 
     function _populateOptions () {
