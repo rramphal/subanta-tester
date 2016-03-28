@@ -189,9 +189,9 @@
 
     var FORMS = {
         sup  : _getSup(),
-        rāma : 'rāmaḥ rāmau rāmāḥ rāmam rāmau rāmān rāmeṇa rāmābhyāṃ rāmaiḥ rāmāya rāmebhyaḥ rāmāt rāmasya rāmayoḥ rāmāṇām rāme rāmeṣu',
-        hari : 'hariḥ harī harayaḥ harim harī harīn hariṇā haribhyāṃ haribhiḥ haraye haribhyaḥ hareḥ hareḥ haryoḥ harīṇām harau hariṣu',
-        pati : 'patiḥ patī patayaḥ patim patī patīn patyā patibhyāṃ patibhiḥ patye patibhyaḥ patyuḥ patyuḥ patyoḥ patīnām patyau patiṣu'
+        rāma : _splitForms('rāmaḥ rāmau rāmāḥ rāmam rāmau rāmān rāmeṇa rāmābhyāṃ rāmaiḥ rāmāya rāmebhyaḥ rāmāt rāmasya rāmayoḥ rāmāṇām rāme rāmeṣu'),
+        hari : _splitForms('hariḥ harī harayaḥ harim harī harīn hariṇā haribhyāṃ haribhiḥ haraye haribhyaḥ hareḥ hareḥ haryoḥ harīṇām harau hariṣu'),
+        pati : _splitForms('patiḥ patī patayaḥ patim patī patīn patyā patibhyāṃ patibhiḥ patye patibhyaḥ patyuḥ patyuḥ patyoḥ patīnām patyau patiṣu')
     };
 
     var OPTIONS = {
@@ -224,7 +224,7 @@
     function _getSup () {
         return SUP_MAPPING.map(function (sup) {
             return sup.sanskrit;
-        }).join(' ');
+        });
     }
 
     function _splitForms (forms) {
@@ -240,7 +240,7 @@
                          forms,
                          '\n\nFALLING BACK TO SUP'
             );
-            return _splitForms(_getSup());
+            return _getSup();
         } else {
             return splitForms;
         }
@@ -252,7 +252,7 @@
         currentIndex = _getRandomIndex(LENGTH);
 
         return '<span class="form">' +
-               _splitForms(FORMS[currentForm])[currentIndex] +
+               FORMS[currentForm][currentIndex] +
                '</span>'
         ;
     }
