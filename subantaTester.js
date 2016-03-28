@@ -228,7 +228,14 @@
         var splitLength = splitForms.length;
 
         if (splitLength !== LENGTH) {
-            console.warn('MISSING FORMS\n\nONLY', splitLength, 'OF', LENGTH, 'FORMS ENTERED:', forms, '\n\nFALLING BACK TO SUP');
+            console.warn('MISSING FORMS\n\nONLY',
+                         splitLength,
+                         'OF',
+                         LENGTH,
+                         'FORMS ENTERED:',
+                         forms,
+                         '\n\nFALLING BACK TO SUP'
+            );
             return _getSup();
         } else {
             return splitForms;
