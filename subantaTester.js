@@ -202,7 +202,6 @@
         case_m   : 'English: Meaning'
     };
 
-
     /* ==================== GLOBALS ==================== */
 
     var testButton   = document.getElementById('test');
