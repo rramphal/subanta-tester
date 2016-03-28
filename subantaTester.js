@@ -194,18 +194,26 @@ function main () {
 
     var length = SUP.length;
 
-    var button = document.getElementById('submit');
-    var output = document.getElementById('output');
-
     function getRandomIndex (length) {
         return Math.floor(Math.random() * length);
     }
 
-    function randomize () {
+    function generateTest () {
         var index = getRandomIndex(length);
 
         output.innerHTML = SUP[index].sanskrit;
     }
 
-    button.addEventListener('click', randomize, false);
+    function showAnswer () {
+        var answer = 'testAnswer';
+
+        output.innerHTML = answer;
+    }
+
+    var test   = document.getElementById('test');
+    var answer = document.getElementById('answer');
+    var output = document.getElementById('output');
+
+    test.addEventListener('click', generateTest, false);
+    answer.addEventListener('click', showAnswer, false);
 }
