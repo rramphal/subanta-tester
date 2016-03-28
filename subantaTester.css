@@ -10,6 +10,16 @@ html {
             user-select: none;
 }
 
+#buttons {
+    text-align: center;
+}
+
+#test, #answer {
+    width: 49%;
+    height: 50px;
+    font-size: 1.5em;
+}
+
 #output {
     margin-top: 10px;
     border: 2px dashed darkgrey;
