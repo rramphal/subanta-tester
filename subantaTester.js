@@ -188,7 +188,7 @@
     var LENGTH = SUP_MAPPING.length;
 
     var FORMS = {
-        sup : _getSup(),
+        sUP : _getSup(),
         rāma : _splitForms('rāmaḥ rāmau* rāmāḥ rāmam rāmau* rāmān rāmeṇa rāmābhyāṃ rāmaiḥ rāmāya rāmebhyaḥ rāmāt rāmasya rāmayoḥ rāmāṇām rāme rāmeṣu'),
         hari : _splitForms('hariḥ harī* harayaḥ harim harī* harīn hariṇā haribhyāṃ haribhiḥ haraye haribhyaḥ hareḥ* hareḥ* haryoḥ harīṇām harau hariṣu'),
         pati : _splitForms('patiḥ patī* patayaḥ patim patī* patīn patyā patibhyāṃ patibhiḥ patye patibhyaḥ patyuḥ* patyuḥ* patyoḥ patīnām patyau patiṣu'),
@@ -209,10 +209,12 @@
     var testButton   = document.getElementById('test');
     var answerButton = document.getElementById('answer');
     var output       = document.getElementById('output');
+    var table        = document.getElementById('table');
     var optionsList  = document.getElementById('options');
     var formsList    = document.config.forms;
 
     var currentIndex;
+    var currentForm;
 
     /* ==================== HELPERS ==================== */
 
@@ -239,7 +241,7 @@
                          LENGTH,
                          'FORMS ENTERED:',
                          forms,
-                         '\n\nFALLING BACK TO SUP'
+                         '\n\nFALLING BACK TO sUP'
             );
             return _getSup();
         } else {
@@ -248,8 +250,7 @@
     }
 
     function _generateTest () {
-        var currentForm = formsList.options[formsList.selectedIndex].value;
-
+        currentForm  = formsList.options[formsList.selectedIndex].value;
         currentIndex = _getRandomIndex(LENGTH);
 
         return '<span class="form">' +
@@ -302,6 +303,89 @@
         output.innerHTML = output.innerHTML + ' (' + _generateAnswer(currentIndex) + ')';
 
         answerButton.disabled = true;
+    }
+
+    /* ==================== TABLE LOGIC ==================== */
+    function _generateTable () {
+        var tableHTML =
+            '<table>' +
+                '<tbody>' +
+                    '<tr>' +
+                        '<td>&nbsp;</th>' +
+                        '<td class="number">ekavachanam</td>' +
+                        '<td class="number">dvivachanam</td>' +
+                        '<td class="number">bahuvachanam</td>' +
+                        '<td>&nbsp;</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td class="right case">prathamā</th>' +
+                        '<td>' + FORMS[currentForm][0] + '</td>' +
+                        '<td>' + FORMS[currentForm][1] + '</td>' +
+                        '<td>' + FORMS[currentForm][2] + '</td>' +
+                        '<td class="left case">nominative <span class="alt">([subject])</span></th>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td class="right case">dvitīyā</th>' +
+                        '<td>' + FORMS[currentForm][3] + '</td>' +
+                        '<td>' + FORMS[currentForm][4] + '</td>' +
+                        '<td>' + FORMS[currentForm][5] + '</td>' +
+                        '<td class="left case">accusative <span class="alt">([direct object])</span></th>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td class="right case">tṛtīyā</th>' +
+                        '<td>' + FORMS[currentForm][6] + '</td>' +
+                        '<td>' + FORMS[currentForm][7] + '</td>' +
+                        '<td>' + FORMS[currentForm][8] + '</td>' +
+                        '<td class="left case">instrumental <span class="alt">(with/by)</span></th>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td class="right case">caturthī</th>' +
+                        '<td>' + FORMS[currentForm][9] + '</td>' +
+                        '<td>' + FORMS[currentForm][7] + '</td>' +
+                        '<td>' + FORMS[currentForm][10] + '</td>' +
+                        '<td class="left case">dative <span class="alt">([indirect object]/to/for)</span></th>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td class="right case">pañcamī</th>' +
+                        '<td>' + FORMS[currentForm][11] + '</td>' +
+                        '<td>' + FORMS[currentForm][7] + '</td>' +
+                        '<td>' + FORMS[currentForm][10] + '</td>' +
+                        '<td class="left case">ablative <span class="alt">(from/out of/owing to)</span></th>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td class="right case">ṣaṣṭhī</th>' +
+                        '<td>' + FORMS[currentForm][12] + '</td>' +
+                        '<td>' + FORMS[currentForm][13] + '</td>' +
+                        '<td>' + FORMS[currentForm][14] + '</td>' +
+                        '<td class="left case">genitive <span class="alt">(of)</span></th>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td class="right case">saptamī</th>' +
+                        '<td>' + FORMS[currentForm][15] + '</td>' +
+                        '<td>' + FORMS[currentForm][13] + '</td>' +
+                        '<td>' + FORMS[currentForm][16] + '</td>' +
+                        '<td class="left case">locative <span class="alt">(at/in)</span></th>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td>&nbsp;</th>' +
+                        '<td class="number">singular</td>' +
+                        '<td class="number">dual</td>' +
+                        '<td class="number">plural</td>' +
+                        '<td>&nbsp;</th>' +
+                    '</tr>' +
+                '</tbody>' +
+            '</table>'
+        ;
+
+        return tableHTML;
+    }
+
+    function clearTable () {
+        table.innerHTML = '';
+    }
+
+    function showTable () {
+        table.innerHTML = _generateTable();
     }
 
     /* ==================== POPULATE VIEW ==================== */
@@ -358,4 +442,6 @@
     populateView();
     testButton.addEventListener('click', showTest, false);
     answerButton.addEventListener('click', showAnswer, false);
+    testButton.addEventListener('click', clearTable, false);
+    answerButton.addEventListener('click', showTable, false);
 });

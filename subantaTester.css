@@ -36,3 +36,19 @@ html {
 .number {
     color: blue;
 }
+
+#table {
+    text-align: center;
+}
+
+.alt {
+    font-style: italic;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
