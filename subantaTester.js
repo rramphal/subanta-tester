@@ -189,9 +189,9 @@
 
     var FORMS = {
         sup  : _getSup(),
-        rāma : _splitForms('rāmaḥ rāmau rāmāḥ rāmam rāmau rāmān rāmeṇa rāmābhyāṃ rāmaiḥ rāmāya rāmebhyaḥ rāmāt rāmasya rāmayoḥ rāmāṇām rāme rāmeṣu'),
-        hari : _splitForms('hariḥ harī harayaḥ harim harī harīn hariṇā haribhyāṃ haribhiḥ haraye haribhyaḥ hareḥ hareḥ haryoḥ harīṇām harau hariṣu'),
-        pati : _splitForms('patiḥ patī patayaḥ patim patī patīn patyā patibhyāṃ patibhiḥ patye patibhyaḥ patyuḥ patyuḥ patyoḥ patīnām patyau patiṣu')
+        rāma : _splitForms('rāmaḥ rāmau* rāmāḥ rāmam rāmau* rāmān rāmeṇa rāmābhyāṃ rāmaiḥ rāmāya rāmebhyaḥ rāmāt rāmasya rāmayoḥ rāmāṇām rāme rāmeṣu'),
+        hari : _splitForms('hariḥ harī* harayaḥ harim harī* harīn hariṇā haribhyāṃ haribhiḥ haraye haribhyaḥ hareḥ* hareḥ* haryoḥ harīṇām harau hariṣu'),
+        pati : _splitForms('patiḥ patī* patayaḥ patim patī* patīn patyā patibhyāṃ patibhiḥ patye patibhyaḥ patyuḥ* patyuḥ* patyoḥ patīnām patyau patiṣu')
     };
 
     var OPTIONS = {
