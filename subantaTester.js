@@ -189,7 +189,7 @@
 
     var FORMS = {
         sup  : _getSup(),
-        rāma : _splitForms('rāmaḥ rāmau rāmāḥ rāmam rāmau rāmān rāmeṇa rāmābhyām rāmaiḥ rāmāya rāmebhyaḥ rāmāt rāmasya rāmayoḥ rāmāṇām rāme rāmeṣu')
+        rāma : 'rāmaḥ rāmau rāmāḥ rāmam rāmau rāmān rāmeṇa rāmābhyām rāmaiḥ rāmāya rāmebhyaḥ rāmāt rāmasya rāmayoḥ rāmāṇām rāme rāmeṣu'
     };
 
     var OPTIONS = {
@@ -217,10 +217,12 @@
         return Math.floor(Math.random() * length);
     }
 
+    /* ==================== TEST LOGIC ==================== */
+
     function _getSup () {
         return SUP_MAPPING.map(function (sup) {
             return sup.sanskrit;
-        });
+        }).join(' ');
     }
 
     function _splitForms (forms) {
@@ -242,15 +244,13 @@
         }
     }
 
-    /* ==================== TEST LOGIC ==================== */
-
     function _generateTest () {
         var currentForm = formsList.options[formsList.selectedIndex].value;
 
         currentIndex = _getRandomIndex(LENGTH);
 
         return '<span class="form">' +
-               FORMS[currentForm][currentIndex] +
+               _splitForms(FORMS[currentForm])[currentIndex] +
                '</span>'
         ;
     }
