@@ -288,8 +288,17 @@ function main () {
         });
     }
 
+    function selectOption (option) {
+        document.config[option].checked = true;
+    }
+
+    function selectDefaultOptions () {
+        ['case_s', 'number_s', 'case_m'].forEach(selectOption);
+    }
+
     populateForms();
     populateOptions();
+    selectDefaultOptions();
 
     test.addEventListener('click', showTest, false);
     answer.addEventListener('click', showAnswer, false);
