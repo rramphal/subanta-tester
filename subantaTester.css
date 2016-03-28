@@ -15,3 +15,12 @@ html {
     border: 2px dashed darkgrey;
     padding: 10px;
 }
+
+#options {
+    list-style-type: none;
+    text-indent: -2em;
+}
+
+#options input {
+    margin-right: 10px;
+}
