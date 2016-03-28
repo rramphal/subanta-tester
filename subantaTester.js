@@ -184,7 +184,7 @@
     ];
 
     const FORMS = {
-        sup  : SUP_MAPPING.map(sup => sup.sanskrit)
+        sup : SUP_MAPPING.map(sup => sup.sanskrit)
     };
 
     const OPTIONS = {
@@ -209,67 +209,67 @@
 
     /* ==================== HELPERS ==================== */
 
-    function getRandomIndex (length) {
+    function _getRandomIndex (length) {
         return Math.floor(Math.random() * length);
     }
 
     /* ==================== TEST LOGIC ==================== */
 
-    function generateTest () {
+    function _generateTest () {
         var currentForm  = formsList.options[formsList.selectedIndex].value;
 
-        currentIndex = getRandomIndex(LENGTH);
+        currentIndex = _getRandomIndex(LENGTH);
 
         return FORMS[currentForm][currentIndex];
     }
 
     function showTest () {
-        output.innerHTML = generateTest();
+        output.innerHTML = _generateTest();
 
         answer.disabled = false;
     }
 
     /* ==================== ANSWER LOGIC ==================== */
 
-    function optionChecked (option) {
+    function _optionChecked (option) {
         return document.config[option].checked;
     }
 
-    function getNumber (variant) {
+    function _getNumber (variant) {
         return NUMBER[SUP_MAPPING[currentIndex].number][variant];
     }
 
-    function getCases (variant) {
+    function _getCases (variant) {
         return SUP_MAPPING[currentIndex].case.map(caseNumber => CASE[caseNumber][variant]).join(', ');
     }
 
-    function generateAnswer () {
+    function _generateAnswer () {
         var answerOutput = [];
 
-        if (optionChecked('case_s'))   { answerOutput.push(getCases('sanskrit'));  }
-        if (optionChecked('number_s')) { answerOutput.push(getNumber('sanskrit')); }
-        if (optionChecked('case_e'))   { answerOutput.push(getCases('english'));   }
-        if (optionChecked('number_e')) { answerOutput.push(getNumber('english'));  }
-        if (optionChecked('case_m'))   { answerOutput.push(getCases('meaning'));   }
+        if (_optionChecked('case_s'))   { answerOutput.push(_getCases('sanskrit'));  }
+        if (_optionChecked('number_s')) { answerOutput.push(_getNumber('sanskrit')); }
+        if (_optionChecked('case_e'))   { answerOutput.push(_getCases('english'));   }
+        if (_optionChecked('number_e')) { answerOutput.push(_getNumber('english'));  }
+        if (_optionChecked('case_m'))   { answerOutput.push(_getCases('meaning'));   }
 
         return answerOutput.join(' | ');
     }
 
     function showAnswer () {
-        output.innerHTML = output.innerHTML + ' (' +generateAnswer(currentIndex) + ')';
+        output.innerHTML = output.innerHTML + ' (' + _generateAnswer(currentIndex) + ')';
 
         answer.disabled = true;
     }
 
     /* ==================== POPULATE VIEW ==================== */
 
-    function populateForms () {
+    function _populateForms () {
         var forms = Object.keys(FORMS);
 
         forms.forEach( form => formsList.add(new Option(form, form)));
     }
 
-    function populateOptions () {
+    function _populateOptions () {
         var options = Object.keys(OPTIONS);
 
         options.forEach( optionName => {
@@ -289,20 +289,23 @@
         });
     }
 
-    function selectOption (option) {
+    function _selectOption (option) {
         document.config[option].checked = true;
     }
 
-    function selectDefaultOptions () {
-        ['case_s', 'number_s', 'case_m'].forEach(selectOption);
+    function _selectDefaultOptions () {
+        ['case_s', 'number_s', 'case_m'].forEach(_selectOption);
     }
 
-    populateForms();
-    populateOptions();
-    selectDefaultOptions();
+    function populateView () {
+        _populateForms();
+        _populateOptions();
+        _selectDefaultOptions();
+    }
 
-    /* ==================== EVENTS ==================== */
+    /* ==================== MAIN ==================== */
 
+    populateView();
     test.addEventListener('click', showTest, false);
     answer.addEventListener('click', showAnswer, false);
 });
