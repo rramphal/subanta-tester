@@ -199,11 +199,11 @@
 
     /* ==================== GLOBALS ==================== */
 
-    var test        = document.getElementById('test');
-    var answer      = document.getElementById('answer');
-    var output      = document.getElementById('output');
-    var optionsList = document.getElementById('options');
-    var formsList   = document.config.forms;
+    var testButton   = document.getElementById('test');
+    var answerButton = document.getElementById('answer');
+    var output       = document.getElementById('output');
+    var optionsList  = document.getElementById('options');
+    var formsList    = document.config.forms;
 
     var currentIndex;
 
@@ -226,7 +226,7 @@
     function showTest () {
         output.innerHTML = _generateTest();
 
-        answer.disabled = false;
+        answerButton.disabled = false;
     }
 
     /* ==================== ANSWER LOGIC ==================== */
@@ -258,7 +258,7 @@
     function showAnswer () {
         output.innerHTML = output.innerHTML + ' (' + _generateAnswer(currentIndex) + ')';
 
-        answer.disabled = true;
+        answerButton.disabled = true;
     }
 
     /* ==================== POPULATE VIEW ==================== */
@@ -306,6 +306,6 @@
     /* ==================== MAIN ==================== */
 
     populateView();
-    test.addEventListener('click', showTest, false);
-    answer.addEventListener('click', showAnswer, false);
+    testButton.addEventListener('click', showTest, false);
+    answerButton.addEventListener('click', showAnswer, false);
 });
