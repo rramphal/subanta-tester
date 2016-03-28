@@ -442,6 +442,6 @@
     populateView();
     testButton.addEventListener('click', showTest, false);
     answerButton.addEventListener('click', showAnswer, false);
-    testButton.addEventListener('click', clearTable, false);
-    answerButton.addEventListener('click', showTable, false);
+    // testButton.addEventListener('click', clearTable, false);
+    // answerButton.addEventListener('click', showTable, false);
 });
