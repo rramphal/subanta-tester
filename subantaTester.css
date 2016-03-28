@@ -4,4 +4,6 @@ html {
 
 #output {
     margin-top: 10px;
+    border: 2px dashed darkgrey;
+    padding: 10px;
 }
