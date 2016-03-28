@@ -1,3 +1,7 @@
 html {
     font-family: 'GentiumAlt', 'Sanskrit 2003';
 }
+
+#output {
+    margin-top: 10px;
+}
