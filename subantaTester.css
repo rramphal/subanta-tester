@@ -24,3 +24,15 @@ html {
 #options input {
     margin-right: 10px;
 }
+
+.form {
+    font-weight: bold;
+}
+
+.case {
+    color: red;
+}
+
+.number {
+    color: blue;
+}

@@ -220,7 +220,10 @@
 
         currentIndex = _getRandomIndex(LENGTH);
 
-        return FORMS[currentForm][currentIndex];
+        return '<span class="form">' +
+               FORMS[currentForm][currentIndex] +
+               '</span>'
+        ;
     }
 
     function showTest () {
@@ -236,13 +239,19 @@
     }
 
     function _getNumber (variant) {
-        return NUMBER[SUP_MAPPING[currentIndex].number][variant];
+        return '<span class="number">' +
+               NUMBER[SUP_MAPPING[currentIndex].number][variant] +
+               '</span>'
+        ;
     }
 
     function _getCases (variant) {
-        return SUP_MAPPING[currentIndex].case.map(function (caseNumber) {
-            return CASE[caseNumber][variant];
-        }).join(', ');
+        return '<span class="case">' +
+               SUP_MAPPING[currentIndex].case.map(function (caseNumber) {
+                   return CASE[caseNumber][variant];
+               }).join(', ') +
+               '</span>'
+        ;
     }
 
     function _generateAnswer () {
