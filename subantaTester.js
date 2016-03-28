@@ -1,22 +1,13 @@
 'use strict';
 
-/* ========================== INIT ========================== */
-
-// Putting this first works because of variable hoisting
-
-function ready (fn) {
+(function (fn) {
     if (document.readyState !== 'loading') {
         fn();
     } else {
         document.addEventListener('DOMContentLoaded', fn);
     }
-}
-
-ready(main);
-
-/* ========================================================== */
-
-function main () {
+})(function () {
+    /* ==================== CONSTANTS ==================== */
     const NUMBER = {
         1 : {
             sanskrit : 'ekavachanam',
@@ -206,6 +197,8 @@ function main () {
 
     const LENGTH = SUP_MAPPING.length;
 
+    /* ==================== GLOBALS ==================== */
+
     var test        = document.getElementById('test');
     var answer      = document.getElementById('answer');
     var output      = document.getElementById('output');
@@ -214,9 +207,13 @@ function main () {
 
     var currentIndex;
 
+    /* ==================== HELPERS ==================== */
+
     function getRandomIndex (length) {
         return Math.floor(Math.random() * length);
     }
+
+    /* ==================== TEST LOGIC ==================== */
 
     function generateTest () {
         var currentForm  = formsList.options[formsList.selectedIndex].value;
@@ -231,6 +228,8 @@ function main () {
 
         answer.disabled = false;
     }
+
+    /* ==================== ANSWER LOGIC ==================== */
 
     function optionChecked (option) {
         return document.config[option].checked;
@@ -261,6 +260,8 @@ function main () {
 
         answer.disabled = true;
     }
+
+    /* ==================== POPULATE VIEW ==================== */
 
     function populateForms () {
         var forms = Object.keys(FORMS);
@@ -300,6 +301,8 @@ function main () {
     populateOptions();
     selectDefaultOptions();
 
+    /* ==================== EVENTS ==================== */
+
     test.addEventListener('click', showTest, false);
     answer.addEventListener('click', showAnswer, false);
-}
+});
