@@ -1,5 +1,7 @@
 'use strict';
 
+/* global console */
+
 (function (fn) {
     if (document.readyState !== 'loading') {
         fn();
@@ -183,8 +185,11 @@
         }
     ];
 
+    var LENGTH = SUP_MAPPING.length;
+
     var FORMS = {
-        sup : SUP_MAPPING.map(function (sup) { return sup.sanskrit; })
+        sup  : _getSup(),
+        rāma : _splitForms('rāmaḥ rāmau rāmāḥ rāmam rāmau rāmān rāmeṇa rāmābhyām rāmaiḥ rāmāya rāmebhyaḥ rāmāt rāmasya rāmayoḥ rāmāṇām rāme rāmeṣu')
     };
 
     var OPTIONS = {
@@ -195,7 +200,6 @@
         case_m   : 'English: Meaning'
     };
 
-    var LENGTH = SUP_MAPPING.length;
 
     /* ==================== GLOBALS ==================== */
 
@@ -211,6 +215,24 @@
 
     function _getRandomIndex (length) {
         return Math.floor(Math.random() * length);
+    }
+
+    function _getSup () {
+        return SUP_MAPPING.map(function (sup) {
+            return sup.sanskrit;
+        });
+    }
+
+    function _splitForms (forms) {
+        var splitForms = forms.split(' ');
+        var splitLength = splitForms.length;
+
+        if (splitLength !== LENGTH) {
+            console.warn('MISSING FORMS\n\nONLY', splitLength, 'OF', LENGTH, 'FORMS ENTERED:', forms, '\n\nFALLING BACK TO SUP');
+            return _getSup();
+        } else {
+            return splitForms;
+        }
     }
 
     /* ==================== TEST LOGIC ==================== */
