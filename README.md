@@ -1,4 +1,4 @@
-#Subanta Tester
+# Subanta Tester
 
 A simple tool to quiz subanta (Sanskrit noun declensions). It is designed for use on the iPhone.
 
